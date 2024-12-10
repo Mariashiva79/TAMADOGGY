@@ -148,13 +148,13 @@
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 0.3s ease-in-out, height 0.3s ease-in-out;
-    background-image: url('images/dog3happy.png');
+    background-image: url('../images/dog2happy.png');
   }
   
-  .pet-display.hungry { background-image: url('images/dog3hungry.png'); }
-  .pet-display.bored { background-image: url('images/dog3bored.png'); }
-  .pet-display.dirty { background-image: url('images/dog3dirty.png'); }
-  .pet-display.sad { background-image: url('images/dog3sad.png'); }
+  .pet-display.hungry { background-image: url('../images/dog2hungry.png'); }
+  .pet-display.bored { background-image: url('../images/dog2bored.png'); }
+  .pet-display.dirty { background-image: url('../images/dog2dirty.png'); }
+  .pet-display.sad { background-image: url('../images/dog2sad.png'); }
   
   #message {
     position: fixed;
@@ -211,7 +211,7 @@
     }
   
     .pet-display {
-        height: 400px 
+        height: 400px; 
         width: 400px 
     }
   
@@ -247,14 +247,14 @@
     }
   
     .pet-display {
-        height: 300px 
+        height: 300px; 
         width: 300px 
     }
   }
   
   @media (max-width: 320px) {
     .pet-display {
-        height: 250px 
+        height: 250px; 
         width: 250px 
     }
   }
