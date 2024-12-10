@@ -3,6 +3,22 @@
   padding: 0;
   box-sizing: border-box;
 }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.language-selector {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #68316d;
+    border: 1px solid #68316d;
+    font-family: 'Fredoka One', cursive;
+    cursor: pointer;
+}
 
 body {
   font-family: "Fredoka One", cursive;
@@ -39,6 +55,7 @@ h1 {
   width: 40px;
   height: auto;
   margin-right: 10px;
+  
 }
 
 /* Estados de la mascota con sus imágenes */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +13,16 @@
   </head>
   <body>
     <div class="container">
-      <h1>
-        <img src="./images/logo.png" alt="logo" class="logo" />
-        TAMADOGGY
-      </h1>
+      <div class="header">
+        <h1>
+          <img src="./images/logo.png" alt="logo" class="logo" />
+          TAMADOGGY
+        </h1>
+        <select id="languageSelector" class="language-selector">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
       <div class="dogs-grid">
         <a href="dog1.html" class="dog-card">
           <img src="images/dog1happy.png" alt="Happy Dog" />
@@ -32,24 +38,21 @@
         </a>
       </div>
       <section class="adopt-section">
-        <h2>¿Por qué Adoptar un Perro?</h2>
-        <p>
+        <h2 data-translate="whyAdopt">¿Por qué Adoptar un Perro?</h2>
+        <p data-translate="adoptParagraph1">
           Adoptar un perro es un acto de amor y responsabilidad. Al hacerlo, no
           solo le das una nueva oportunidad de vida a un animal, sino que
           también contribuyes a reducir la sobrepoblación animal en las
           perreras. Este juego te invita a entrenarte en el cuidado de un perro,
           ayudándote a entender sus necesidades, emociones y responsabilidades,
-          para que puedas estar lista cuando decidas adoptar.
+          para que puedas estar lista cuando decidas adoptar. Aquí tienes
+          algunos enlaces donde puedes encontrar perros en adopción en Navarra:
         </p>
-
-        <p>
-          Si te animas a adoptar, aquí tienes algunos enlaces útiles con perros
-          que están en Navarra:
-        </p>
-
         <ul>
           <li>
-            <a href="https://www.facebook.com/cpagobiernodenavarra?ref=hl" target="_blank"
+            <a
+              href="https://www.facebook.com/cpagobiernodenavarra?ref=hl"
+              target="_blank"
               >Txikas de Etxauri</a
             >
           </li>
@@ -64,13 +67,11 @@
             >
           </li>
           <li>
-            <a href="https://egapeludos.org/" target="_blank"
-              >EGA peludos</a
-            >
+            <a href="https://egapeludos.org/" target="_blank">EGA peludos</a>
           </li>
         </ul>
 
-        <p>
+        <p data-translate="adoptParagraph3">
           Recuerda, un perro no es un juguete, sino un miembro más de la
           familia. Adoptar un perro es un compromiso a largo plazo, pero con
           amor y cuidado, la recompensa es inmensa.
@@ -78,8 +79,12 @@
       </section>
 
       <footer>
-        <p>&copy; 2024 TAMADOGGY - Virtual Pet Game by María Jiménez Gorjón</p>
+        <p data-translate="footer">
+          &copy; 2024 TAMADOGGY - Virtual Pet Game by María Jiménez Gorjón
+        </p>
       </footer>
     </div>
+    <script src="translations.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>

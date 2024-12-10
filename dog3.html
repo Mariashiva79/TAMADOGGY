@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TAMADOGGY - Uri</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
-  <link rel="icon" href="./images/logo.png" type="image/png" />
-  <link rel="stylesheet" href="style4.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAMADOGGY - URI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+    <link rel="icon" href="./images/logo.png" type="image/png" />
+    <link rel="stylesheet" href="style4.css" />
 </head>
 <body>
     <nav>
-        <a href="index.html" class="back-button">Home</a>
+        <a href="index.html" class="back-button" data-translate="home">Inicio</a>
         <div class="logo-container">
             <img src="images/logo.png" alt="Tamadoggy Logo" class="logo">
-            <h1>TAMADOGGY</h1>
+            <h1 data-translate="title">TAMADOGGY</h1>
         </div>
-        <div style="width: 100px;"></div> <!-- Spacer to balance the layout -->
+        <select id="languageSelector" class="language-selector">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+        </select>
     </nav>
 
     <div class="container">
@@ -40,25 +43,25 @@
             <div class="pet-section">
                 <div class="stats">
                     <div class="stat-container">
-                        <h3>Hambre <span id="hungerPercent">100%</span></h3>
+                        <h3><span data-translate="hunger">Hambre</span> <span id="hungerPercent">100%</span></h3>
                         <div class="stat-bar">
                             <div class="stat-fill" id="hungerBar" style="width: 100%"></div>
                         </div>
                     </div>
                     <div class="stat-container">
-                        <h3>Diversión <span id="funPercent">100%</span></h3>
+                        <h3><span data-translate="fun">Diversión</span> <span id="funPercent">100%</span></h3>
                         <div class="stat-bar">
                             <div class="stat-fill" id="funBar" style="width: 100%"></div>
                         </div>
                     </div>
                     <div class="stat-container">
-                        <h3>Limpieza <span id="cleanlinessPercent">100%</span></h3>
+                        <h3><span data-translate="cleanliness">Limpieza</span> <span id="cleanlinessPercent">100%</span></h3>
                         <div class="stat-bar">
                             <div class="stat-fill" id="cleanlinessBar" style="width: 100%"></div>
                         </div>
                     </div>
                     <div class="stat-container">
-                        <h3>Afecto <span id="affectionPercent">100%</span></h3>
+                        <h3><span data-translate="affection">Afecto</span> <span id="affectionPercent">100%</span></h3>
                         <div class="stat-bar">
                             <div class="stat-fill" id="affectionBar" style="width: 100%"></div>
                         </div>
@@ -73,9 +76,11 @@
     <div id="message"></div>
 
     <footer>
-        <p>&copy; 2024 Tamadoggy - All Rights Reserved</p>
+        <p>&copy; 2024 Tamadoggy - <span data-translate="copyright">Todos los derechos reservados</span></p>
     </footer>
 
-  <script src="game.js"></script>
+    <script src="translations.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
+
