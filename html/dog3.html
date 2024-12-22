@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAMADOGGY - URI</title>
+    <title>TAMADOGGY -  URI</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
-    <link rel="icon" href="./images/logo.png" type="image/png" />
+    <link rel="icon" href="../images/logo.png" type="image/png" />
     <link rel="stylesheet" href="../css/style4.css" />
 </head>
 <body>
@@ -68,7 +68,23 @@
                     </div>
                 </div>
                 
-                <div id="petImage" class="pet-display"></div>
+                <div class="pet-display-container">
+                    <div id="petImage" class="pet-display"></div>
+                    <div class="score-display">
+                        <h3 data-translate="currentScore">Puntuación actual:</h3>
+                        <span id="currentScore">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="scoreSection" class="score-section">
+                <h3 data-translate="saveScore">Guardar Puntuación</h3>
+                <form id="scoreForm">
+                    <input type="text" id="username" placeholder="Nombre de usuario" required>
+                    <button type="submit" data-translate="save">Guardar</button>
+                </form>
+                <h3 data-translate="scores">Puntuaciones</h3>
+                <ul id="scoreList"></ul>
             </div>
         </div>
     </div>
@@ -83,4 +99,8 @@
     <script src="../js/game.js"></script>
 </body>
 </html>
+
+
+
+
 

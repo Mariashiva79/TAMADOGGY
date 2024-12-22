@@ -32,11 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isHomePage()) {
         initializeGame();
     }
+
+    // Inicializar la sección de puntuaciones
+    initializeScoreSection();
 });
 
-// Función para inicializar el juego (solo se llama en las páginas de mascotas)
+// Función para inicializar el juego (solo se llama en las páginas de cada perro)
 function initializeGame() {
-    // Aquí va todo el código existente del juego
     class Pet {
         constructor() {
             this.stats = {
@@ -45,28 +47,59 @@ function initializeGame() {
                 cleanliness: 100,
                 affection: 100,
             };
-            this.decreaseInterval = setInterval(() => this.decreaseStats(), 700);
+            this.happyTime = 0;
+            this.lastUpdateTime = Date.now();
+            this.decreaseInterval = setInterval(() => this.updateStats(), 700);
         }
 
-        decreaseStats() {
-            this.stats.hunger = Math.max(0, this.stats.hunger - 0.5);
-            this.stats.fun = Math.max(0, this.stats.fun - 0.4);
-            this.stats.cleanliness = Math.max(0, this.stats.cleanliness - 0.3);
-            this.stats.affection = Math.max(0, this.stats.affection - 0.2);
+        updateStats() {
+            const currentTime = Date.now();
+            const deltaTime = (currentTime - this.lastUpdateTime) / 1000; // tiempo en segundos
+
+            this.stats.hunger = Math.max(0, this.stats.hunger - 0.5 * deltaTime);
+            this.stats.fun = Math.max(0, this.stats.fun - 0.4 * deltaTime);
+            this.stats.cleanliness = Math.max(0, this.stats.cleanliness - 0.3 * deltaTime);
+            this.stats.affection = Math.max(0, this.stats.affection - 0.2 * deltaTime);
+
+            if (this.isHappy()) {
+                this.happyTime += deltaTime;
+                this.updateScoreDisplay();
+            }
+
+            this.lastUpdateTime = currentTime;
             this.updateBars();
             this.checkStatus();
+        }
+
+        isHappy() {
+            return Object.values(this.stats).every(stat => stat >= 70);
         }
 
         updateBars() {
             for (let stat in this.stats) {
                 const percentage = Math.round(this.stats[stat]);
-                document.getElementById(`${stat}Bar`).style.width = `${percentage}%`;
-                document.getElementById(`${stat}Percent`).textContent = `${percentage}%`;
+                const barElement = document.getElementById(`${stat}Bar`);
+                const percentElement = document.getElementById(`${stat}Percent`);
+                if (barElement) {
+                    barElement.style.width = `${percentage}%`;
+                }
+                if (percentElement) {
+                    percentElement.textContent = `${percentage}%`;
+                }
+            }
+        }
+
+        updateScoreDisplay() {
+            const scoreElement = document.getElementById('currentScore');
+            if (scoreElement) {
+                scoreElement.textContent = Math.round(this.happyTime)*100;
             }
         }
 
         checkStatus() {
             const petImage = document.getElementById("petImage");
+            if (!petImage) return;
+
             const states = ["hungry", "bored", "dirty", "sad"];
             states.forEach(state => petImage.classList.remove(state));
 
@@ -92,6 +125,7 @@ function initializeGame() {
             if (Object.values(this.stats).some(stat => stat === 0)) {
                 clearInterval(this.decreaseInterval);
                 showMessage(translate("gameOver"));
+                this.saveScore();
             }
         }
 
@@ -112,8 +146,16 @@ function initializeGame() {
                     this.stats.fun = Math.min(100, this.stats.fun + 5);
                     break;
             }
-            this.updateBars();
-            this.checkStatus();
+            this.updateStats();
+        }
+
+        saveScore() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                sendScore(username, Math.round(this.happyTime)*100);
+            } else {
+                showMessage(translate("enterUsername"));
+            }
         }
     }
 
@@ -210,11 +252,69 @@ function initializeGame() {
     adjustLayout();
 }
 
-
 // Event listener para el cambio de tamaño de la ventana
 window.addEventListener('resize', () => {
     if (!isHomePage()) {
         adjustLayout();
     }
 });
+
+// Funciones para manejar puntuaciones
+function initializeScoreSection() {
+    const scoreForm = document.getElementById('scoreForm');
+    if (scoreForm) {
+        scoreForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const score = document.getElementById('currentScore').innerText;
+            console.log(username, score);
+            
+            
+            if (username) {
+                sendScore(username, score);
+            } else {
+                showMessage(translate("enterUsername"));
+            }
+        });
+    }
+    getAllScores();
+}
+
+function sendScore(username, score) {
+    fetch('/api/save-score', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, score }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+       // showMessage(translate("scoreSaved"));
+        getAllScores();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function getAllScores() {
+    fetch('/api/all-scores')
+    .then(response => response.json())
+    .then(scores => {
+        const scoreList = document.getElementById('scoreList');
+        if (scoreList) {
+            scoreList.innerHTML = '';
+            for (const [username, score] of Object.entries(scores)) {
+                const li = document.createElement('li');
+                li.textContent = `${username}: ${score} ${translate("points")}`;
+                scoreList.appendChild(li);
+            }
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+
+
 

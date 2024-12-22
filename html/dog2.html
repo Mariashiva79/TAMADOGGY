@@ -1,185 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAMADOGGY - ZERO</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="./images/logo.png" type="image/png" />
+    <title>TAMADOGGY -  ZERO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+    <link rel="icon" href="../images/logo.png" type="image/png" />
     <link rel="stylesheet" href="../css/style3.css" />
-  </head>
-  <body>
+</head>
+<body>
     <nav>
-      <a href="../index.html" class="back-button" data-translate="home"
-        >Inicio</a
-      >
-      <div class="logo-container">
-        <img src="../images/logo.png" alt="Tamadoggy Logo" class="logo" />
-        <h1 data-translate="title">TAMADOGGY</h1>
-      </div>
-      <select id="languageSelector" class="language-selector">
-        <option value="es">Español</option>
-        <option value="en">English</option>
-      </select>
+        <a href="../index.html" class="back-button" data-translate="home">Inicio</a>
+        <div class="logo-container">
+            <img src="../images/logo.png" alt="Tamadoggy Logo" class="logo">
+            <h1 data-translate="title">TAMADOGGY</h1>
+        </div>
+        <select id="languageSelector" class="language-selector">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+        </select>
     </nav>
 
     <div class="container">
-      <div class="game-container">
-        <h2 id="petName" class="pet-name">Zero</h2>
+        <div class="game-container">
+            <h2 id="petName" class="pet-name">Zero</h2>
+            
+            <div class="action-icons">
+                <img src="../images/bread.png" alt="Pan" class="draggable" data-action="feed" draggable="true">
+                <img src="../images/bone.png" alt="Hueso" class="draggable" data-action="feed" draggable="true">
+                <img src="../images/salmon.png" alt="Salmón" class="draggable" data-action="feed" draggable="true">
+                <img src="../images/ball.png" alt="Pelota" class="draggable" data-action="play" draggable="true">
+                <img src="../images/rope.png" alt="Cuerda" class="draggable" data-action="play" draggable="true">
+                <img src="../images/frisbee.png" alt="Frisbee" class="draggable" data-action="play" draggable="true">
+                <img src="../images/soap.png" alt="Jabón" class="draggable" data-action="clean" draggable="true">
+                <img src="../images/towel.png" alt="Toalla" class="draggable" data-action="clean" draggable="true">
+                <img src="../images/brush.png" alt="Champú" class="draggable" data-action="clean" draggable="true">
+                <img src="../images/pet.png" alt="Caricia" class="draggable" data-action="pet" draggable="true">
+                <img src="../images/abrazo.png" alt="abrazo" class="draggable" data-action="pet" draggable="true">
+                <img src="../images/premio.png" alt="Premio" class="draggable" data-action="pet" draggable="true">
+            </div>
+            
+            <div class="pet-section">
+                <div class="stats">
+                    <div class="stat-container">
+                        <h3><span data-translate="hunger">Hambre</span> <span id="hungerPercent">100%</span></h3>
+                        <div class="stat-bar">
+                            <div class="stat-fill" id="hungerBar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-container">
+                        <h3><span data-translate="fun">Diversión</span> <span id="funPercent">100%</span></h3>
+                        <div class="stat-bar">
+                            <div class="stat-fill" id="funBar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-container">
+                        <h3><span data-translate="cleanliness">Limpieza</span> <span id="cleanlinessPercent">100%</span></h3>
+                        <div class="stat-bar">
+                            <div class="stat-fill" id="cleanlinessBar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-container">
+                        <h3><span data-translate="affection">Afecto</span> <span id="affectionPercent">100%</span></h3>
+                        <div class="stat-bar">
+                            <div class="stat-fill" id="affectionBar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pet-display-container">
+                    <div id="petImage" class="pet-display"></div>
+                    <div class="score-display">
+                        <h3 data-translate="currentScore">Puntuación actual:</h3>
+                        <span id="currentScore">0</span>
+                    </div>
+                </div>
+            </div>
 
-        <div class="action-icons">
-          <img
-            src="../images/bread.png"
-            alt="Pan"
-            class="draggable"
-            data-action="feed"
-            draggable="true"
-          />
-          <img
-            src="../images/bone.png"
-            alt="Hueso"
-            class="draggable"
-            data-action="feed"
-            draggable="true"
-          />
-          <img
-            src="../images/salmon.png"
-            alt="Salmón"
-            class="draggable"
-            data-action="feed"
-            draggable="true"
-          />
-          <img
-            src="../images/ball.png"
-            alt="Pelota"
-            class="draggable"
-            data-action="play"
-            draggable="true"
-          />
-          <img
-            src="../images/rope.png"
-            alt="Cuerda"
-            class="draggable"
-            data-action="play"
-            draggable="true"
-          />
-          <img
-            src="../images/frisbee.png"
-            alt="Frisbee"
-            class="draggable"
-            data-action="play"
-            draggable="true"
-          />
-          <img
-            src="../images/soap.png"
-            alt="Jabón"
-            class="draggable"
-            data-action="clean"
-            draggable="true"
-          />
-          <img
-            src="../images/towel.png"
-            alt="Toalla"
-            class="draggable"
-            data-action="clean"
-            draggable="true"
-          />
-          <img
-            src="../images/brush.png"
-            alt="Champú"
-            class="draggable"
-            data-action="clean"
-            draggable="true"
-          />
-          <img
-            src="../images/pet.png"
-            alt="Caricia"
-            class="draggable"
-            data-action="pet"
-            draggable="true"
-          />
-          <img
-            src="../images/abrazo.png"
-            alt="abrazo"
-            class="draggable"
-            data-action="pet"
-            draggable="true"
-          />
-          <img
-            src="../images/premio.png"
-            alt="Premio"
-            class="draggable"
-            data-action="pet"
-            draggable="true"
-          />
+            <div id="scoreSection" class="score-section">
+                <h3 data-translate="saveScore">Guardar Puntuación</h3>
+                <form id="scoreForm">
+                    <input type="text" id="username" placeholder="Nombre de usuario" required>
+                    <button type="submit" data-translate="save">Guardar</button>
+                </form>
+                <h3 data-translate="scores">Puntuaciones</h3>
+                <ul id="scoreList"></ul>
+            </div>
         </div>
-
-        <div class="pet-section">
-          <div class="stats">
-            <div class="stat-container">
-              <h3>
-                <span data-translate="hunger">Hambre</span>
-                <span id="hungerPercent">100%</span>
-              </h3>
-              <div class="stat-bar">
-                <div class="stat-fill" id="hungerBar" style="width: 100%"></div>
-              </div>
-            </div>
-            <div class="stat-container">
-              <h3>
-                <span data-translate="fun">Diversión</span>
-                <span id="funPercent">100%</span>
-              </h3>
-              <div class="stat-bar">
-                <div class="stat-fill" id="funBar" style="width: 100%"></div>
-              </div>
-            </div>
-            <div class="stat-container">
-              <h3>
-                <span data-translate="cleanliness">Limpieza</span>
-                <span id="cleanlinessPercent">100%</span>
-              </h3>
-              <div class="stat-bar">
-                <div
-                  class="stat-fill"
-                  id="cleanlinessBar"
-                  style="width: 100%"
-                ></div>
-              </div>
-            </div>
-            <div class="stat-container">
-              <h3>
-                <span data-translate="affection">Afecto</span>
-                <span id="affectionPercent">100%</span>
-              </h3>
-              <div class="stat-bar">
-                <div
-                  class="stat-fill"
-                  id="affectionBar"
-                  style="width: 100%"
-                ></div>
-              </div>
-            </div>
-          </div>
-
-          <div id="petImage" class="pet-display"></div>
-        </div>
-      </div>
     </div>
 
     <div id="message"></div>
 
     <footer>
-      <p>
-        &copy; 2024 Tamadoggy -
-        <span data-translate="copyright">Todos los derechos reservados</span>
-      </p>
+        <p>&copy; 2024 Tamadoggy - <span data-translate="copyright">Todos los derechos reservados</span></p>
     </footer>
 
     <script src="../js/translations.js"></script>
     <script src="../js/game.js"></script>
-  </body>
+</body>
 </html>
+
+
+
+
+
